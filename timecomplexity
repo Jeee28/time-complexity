@@ -1,0 +1,15 @@
+def permute(my_list):
+    if len(my_list) == 0:
+        return [[]]
+    first = my_list[0]
+    rest = my_list[1:]
+    perms_without_first = permute(rest)
+    
+    all_perms = []
+    for perm in perms_without_first:
+        for i in range(len(perm) + 1):
+            all_perms.append(perm[:i] + [first] + perm[i:])
+    return all_perms
+
+# Factorial time complexity O(n!)
+print(permute([1, 2, 3]))
